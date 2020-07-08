@@ -28,7 +28,7 @@ public class DesEncriptacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        botonEncriptar = new javax.swing.JButton();
+        botonDesEncriptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaDeTexto = new javax.swing.JTextArea();
         menuBar = new javax.swing.JMenuBar();
@@ -40,9 +40,9 @@ public class DesEncriptacion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("INGRESE EL TEXTO QUE DESEA ENCRIPTAR: ");
+        jLabel1.setText("TEXT DESENCRIPTADO:");
 
-        botonEncriptar.setText("ENCRIPTAR");
+        botonDesEncriptar.setText("DESENCRIPTAR");
 
         areaDeTexto.setColumns(20);
         areaDeTexto.setRows(5);
@@ -88,21 +88,21 @@ public class DesEncriptacion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonEncriptar)))
+                        .addComponent(botonDesEncriptar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(botonEncriptar)))
+                        .addGap(152, 152, 152)
+                        .addComponent(botonDesEncriptar)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -150,7 +150,7 @@ public class DesEncriptacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDeTexto;
-    private javax.swing.JButton botonEncriptar;
+    private javax.swing.JButton botonDesEncriptar;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel jLabel1;
