@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
 public class ControladorDesencriptado {
     public String desencriptar(String texto) {
         String textoDesencriptado = "";
-        
+        //METODO PASA TEXTO QUE ANALIZA
         StringTokenizer desencriptado = new StringTokenizer(texto, "%$");
         while (desencriptado.hasMoreTokens()) {
             String caracter = desencriptado.nextToken();

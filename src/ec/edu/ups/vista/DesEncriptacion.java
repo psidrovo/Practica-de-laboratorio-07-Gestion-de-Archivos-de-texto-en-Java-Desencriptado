@@ -7,9 +7,12 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorDesencriptado;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -114,14 +117,19 @@ public class DesEncriptacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAbrirActionPerformed
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogTitle("BUSCAR DOCUMENTO");
+        fc.setCurrentDirectory(new File("D:\\"));
+        fc.setFileFilter(new FileNameExtensionFilter("Notas.txt", "txt"));
+        if (fc.showOpenDialog(this) == 0) {
+            ruta = fc.getSelectedFile().toString();
+        }
         try {
-            String ruta = "D:\\PROYECTO JAVA\\archivoTexto.txt";
             FileReader archivoLectura = new FileReader(ruta);
-
             BufferedReader lectura = new BufferedReader(archivoLectura);
             texto = "";
-            String linea="";
-            while ((linea=lectura.readLine()) != null) {
+            String linea = "";
+            while ((linea = lectura.readLine()) != null) {
                 texto += linea;
             }
             lectura.close();
