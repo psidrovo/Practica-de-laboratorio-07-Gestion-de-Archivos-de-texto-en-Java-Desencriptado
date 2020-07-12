@@ -282,3 +282,7 @@ Así mismo se crearon ActionPerformed Events para que el usuario pueda decidir q
 	mnAbrirActionPerformed: medinate el evento action performed se ejecuta el ruta a abrir. Este se puede personalizar según el usuario, en el caso de nuestro programa se utilizo el método setDialogTitle("") para nombrar el archivo. También se utilizo el método setCurrentDirectory(File) en la cual se la pasa la ruta indicando donde deseamos abrir como predeterminando. El tercer método utilizado es el setFileFilter(FileNameExtensionFilter) en la cual se le pasa el tipo de archivo que el usuario debe elegir. El primer atributo es el nombre que queremos visualizar y el segundo es la extensión del archivo. Por ultimo se abre la ventana de guardar mediante el método showSaveDialog(). Una vez obtenido la ruta mediante el FileReader () leemos el documento y se des-encripta. Al final se pasa ese texto a que se visualize en el textArea  
 	mnCerrarActionPerformed: esta opción nos permite cerrar el documento en caso de que se creo algún documento no deseado.
 	mnSalirActionPerformed: esta opción termina el programa. 
+
+**Imagen de interfaz**
+
+<img width="668" alt="Screen Shot 2020-07-12 at 3 47 24 PM" src="https://user-images.githubusercontent.com/64902384/87256359-6ee63180-c457-11ea-810d-8d770d37895f.png">
