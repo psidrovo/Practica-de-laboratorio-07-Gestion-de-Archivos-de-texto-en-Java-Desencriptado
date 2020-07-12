@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorDesencriptado;
@@ -11,24 +6,41 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
+ * VISTA DESENCRIPTADO.Esta vista se encarga de manejar todo sobre el
+ * desencriptado de un documento tendremos un menu para abri, cerrar y salir.
  *
- * @author Dutan2000
+ * ruta String - Se le pasara la ruta donde se desea guardar
+ * texto String - Se le pasara el texto del textArea
+ * controladorDesencriptado ControladorDesencriptado - Se almacenara el
+ * objeto que controla el Encriptado.
+ *
+ * @author Paul Idrovo, Dennis Dutan
  */
 public class DesEncriptacion extends javax.swing.JFrame {
 
     private String ruta;
     private String texto;
     private ControladorDesencriptado controladorDesencriptado;
-    
+
+    /**
+     * CONSTRUCTOR. Se inicializa los componentes graficos y las variables
+     * globales
+     */
     public DesEncriptacion() {
         initComponents();
-        this.ruta="";
-        this.texto="";
+        this.ruta = "";
+        this.texto = "";
         this.controladorDesencriptado = new ControladorDesencriptado();
+        this.setLocationRelativeTo(this);
+        this.setResizable(false);
+        this.setIconImage(new ImageIcon(getClass().getResource("/ec/edu/ups/multimedia/carpeta.png")).getImage());
     }
 
     /**
@@ -50,6 +62,7 @@ public class DesEncriptacion extends javax.swing.JFrame {
         mnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("DESENCRIPTADO DE DOCUMENTOS");
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("TEXTO DESENCRIPTADO:");
@@ -116,6 +129,30 @@ public class DesEncriptacion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * OPCION MENU ABRIR. Mediante el evento de action performed se ejecuta el
+     * JFileChooser el mismo que nos ayudara a buscar la ruta de donde deseamos
+     * guardar. Este se puede personalizar segun nuestras necesidades, en este
+     * caso fc.setDialogTitle("") se le pasa un titulo dependiendo la necesidad
+     * del programador, en este caso es BUSCAR DOCUMENTO.
+     * fc.setCurrentDirectory(File) se le pasa ob objeto tipo file que debe
+     * tener la ruta donde deseamos que se abra como predeterminado, en caso de
+     * no encontrarla se ira a la ruta predeterminada del sistema de Documentos.
+     * fc.setFileFilter(FileNameExtensionFilter) se le pasa el tipo de archivos
+     * que el usuario debe elegir, el primer atributo es el nombre que queremos
+     * para visualizar y el segundo la extencion del archivo. Y abrimos la
+     * ventana de abiri mediante fc.showOpenDialog;
+     *
+     * Luego de tener la ruta mediante FileReader leemos el documento y le
+     * desencriptamos el texto por el metodo desencriptar del controlador
+     * Desencriptado. Al final pasamos al text Area para la visualizacion del
+     * usuario.
+     *
+     * @see FileWriter
+     * @see JFileChooser
+     * @see ControladorEncriptado
+     * @param evt
+     */
     private void mnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAbrirActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setDialogTitle("BUSCAR DOCUMENTO");
@@ -142,12 +179,23 @@ public class DesEncriptacion extends javax.swing.JFrame {
         }
         txtaTexto.setText(controladorDesencriptado.desencriptar(texto));
     }//GEN-LAST:event_mnAbrirActionPerformed
-
+    /**
+     * OPCION MENU CERRAR. Esta opcion del menu nos ayuda para cerrar el
+     * documento si lo abrimos por accidente.
+     *
+     * @param evt
+     */
     private void mnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCerrarActionPerformed
         txtaTexto.setEditable(false);
         txtaTexto.setText("");
     }//GEN-LAST:event_mnCerrarActionPerformed
 
+    /**
+     * OPCION MENU SALIR. Esta opcion del menu nos ayuda para salir del
+     * programa.
+     *
+     * @param evt
+     */
     private void mnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_mnSalirActionPerformed
@@ -182,6 +230,11 @@ public class DesEncriptacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                    System.out.println("Error setting Java LAF: " + e);
+                }
                 new DesEncriptacion().setVisible(true);
             }
         });

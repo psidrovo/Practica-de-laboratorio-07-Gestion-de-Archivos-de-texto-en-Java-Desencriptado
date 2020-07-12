@@ -1,21 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.controlador;
 
 import java.nio.charset.StandardCharsets;
 import java.util.StringTokenizer;
 
 /**
+ * CONTROLADOR DESENCRIPTADO.
  *
- * @author Paul Idrovo
+ * Este controlador se encarga de desencriptar el texto que nos pasa la vista
+ * Desencriptacion al metoodo Desencriptar
+ *
+ * @author Paul Idrovo, Dennis Dutan
  */
 public class ControladorDesencriptado {
+
+    /**
+     * METODO DESENCRIPTAR. Este metodo se encarga de desencriptar el texto del
+     * documento encriptado. Para esto usamos StringTokenizer, quien nos ayuda a
+     * separar los caracteres encriptados, se le tiene que pasar el texto y el
+     * caracter que deseamos poner como separador, en este caso es "%$" ya que
+     * en el encriptado se lo concatenaba despues de cada numero generado.
+     *
+     * Luego recoremos el resultado de StringTokenizer mediante un while, vamos
+     * leyendo cada codigo y hacemos operaciones inversas al encriptado y asi
+     * obtener el codigo ASCII de cada letra e irlos concatenando en un texto en
+     * el que el Usuario pueda leer.
+     *
+     * @param texto String - Texto Encriptado
+     * @return textoDesencriptado String - Texto desencriptado
+     */
     public String desencriptar(String texto) {
         String textoDesencriptado = "";
-        //METODO PASA TEXTO QUE ANALIZA
         StringTokenizer desencriptado = new StringTokenizer(texto, "%$");
         while (desencriptado.hasMoreTokens()) {
             String caracter = desencriptado.nextToken();
